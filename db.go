@@ -34,12 +34,9 @@ func main() {
 	}
 
 	dataStore := NewDataStore()
-	for {
-		reader := bufio.NewReader(os.Stdin)
-		text, err := reader.ReadString('\n')
-		if err != nil {
-			return
-		}
+	scanner := bufio.NewScanner(os.Stdin)
+	for scanner.Scan() {
+		text := scanner.Text()
 		text = strings.Trim(text, " \t\n")
 
 		if len(text) > 0 {
